@@ -1,0 +1,20 @@
+---
+const platform = "github";
+const username = "Jesus-Reynaldo";
+import Social from "./Social.astro";
+---
+
+<footer class="bg-gray-800 text-white py-2 flex flex-col justify-end pb-4">
+  <p>Learn more about my projects on <a href={`https://www.${platform}.com/${username}`} target="_blank">{platform}</a></p>
+  <Social platform="github" username="Jesus-Reynaldo" />
+  <Social platform="twitter" username="jezuzz16" />
+  <Social platform="facebook" username="Jesuz.REYnaldo" />
+</footer>
+
+<style>
+  footer{
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+</style>

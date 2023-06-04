@@ -1,5 +1,5 @@
 ---
-import Navegator from "../components/Navegator.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 const pageTitle = "About Me";
 const identity = {
   firstName: "Jesus",
@@ -17,42 +17,33 @@ const fontWeight = "bold";
 const textCase = "uppercase";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-    <style define:vars={{skillColor, fontWeight, textCase}}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-      }
-    </style>
-	</head>
-	<body>
-    <Navegator />
-    <main class="p-4">
-      <h1 class="text-purple-900 text-center text-lg font-bold">{pageTitle}</h1>
-      <p>Here are a few facts about me:</p>
-      <ul>
-        <li>I'm {identity.firstName}</li>
-        <li>I'm from {identity.country}</li>
-        <li>I'm a {identity.occupation}</li>
-      </ul>
-      <p>My skills are:</p>
-      <ul>
-        {skills.map((skill)=><li class="skill">{skill}</li>)}
-      </ul>
-      {happy && <p>I am happy to be learning Astro!</p>}
-      {finished && <p>I finished this tutorial!</p>}
-      {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
-    </main>
-	</body>
-</html>
+<BaseLayout>
+  <main class="p-4">
+    <h1 class="text-purple-900 text-center text-lg font-bold">{pageTitle}</h1>
+    <p>Here are a few facts about me:</p>
+    <ul>
+      <li>I'm {identity.firstName}</li>
+      <li>I'm from {identity.country}</li>
+      <li>I'm a {identity.occupation}</li>
+    </ul>
+    <p>My skills are:</p>
+    <ul>
+      {skills.map((skill)=><li class="skill">{skill}</li>)}
+    </ul>
+    {happy && <p>I am happy to be learning Astro!</p>}
+    {finished && <p>I finished this tutorial!</p>}
+    {goal === 3 ? <p>My goal is to finish in 3 days.</p> : <p>My goal is not 3 days.</p>}
+  </main>
+</BaseLayout>
+
+<style define:vars={{skillColor, fontWeight, textCase}}>
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
